@@ -1,18 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, onSnapshot, updateDoc, collection, addDoc, deleteDoc, query, getDocs } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, onSnapshot, updateDoc, collection, addDoc, deleteDoc } from 'firebase/firestore';
 
 // --- Helper Functions & Constants ---
+// eslint-disable-next-line no-undef
 const getAppId = () => typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 const getFirebaseConfig = () => {
     try {
+        // eslint-disable-next-line no-undef
         return typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "...", authDomain: "...", projectId: "..." };
     } catch (e) {
         console.error("Failed to parse Firebase config:", e);
         return { apiKey: "...", authDomain: "...", projectId: "..." };
     }
 };
+// eslint-disable-next-line no-undef
 const getInitialAuthToken = () => typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
 const toSafeInt = (x, def = 0, max = 1000) => {
@@ -59,9 +62,9 @@ const ToggleSwitch = ({ isEnabled, onToggle }) => (
 
 // --- Plan Page Component ---
 const PlanPage = ({ userId, activePlanId, plans, handleNewPlan, handleDeletePlan }) => {
-    const [planName, setPlanName] = useState('My Plan');
-    const [numSessions, setNumSessions] = useState(7);
-    const [activities, setActivities] = useState(Array.from({ length: 7 }, () => ({ text: '', isRest: false })));
+    const [planName, setPlanName] = useState('');
+    const [numSessions, setNumSessions] = useState(0);
+    const [activities, setActivities] = useState([]);
     const [status, setStatus] = useState({ message: '', type: '' });
     const [isLoading, setIsLoading] = useState(true);
 
@@ -90,7 +93,7 @@ const PlanPage = ({ userId, activePlanId, plans, handleNewPlan, handleDeletePlan
             if (docSnap.exists()) {
                 const data = sanitizePlanData(docSnap.data());
                 setPlanName(data.name);
-                setNumSessions(data.sessions || 7);
+                setNumSessions(data.sessions);
                 setActivities(data.activities);
             } else {
                 setPlanName('Plan not found');
@@ -326,8 +329,8 @@ const TrackingPage = ({ userId, activePlanId }) => {
 
     useEffect(() => {
         if (!userId || !activePlanId) {
-            setPlan({ sessions: 0, activities: [] });
-            setTrackingData({ grid: [], currentCycleIndex: 0, planHistory: {}, highestCycleIndex: 0 });
+            setPlan(null);
+            setTrackingData(null);
             return;
         }
         const appId = getAppId();
