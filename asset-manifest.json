@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/PATERILLETTES/pasta-app/static/css/main.3347b998.css",
-    "main.js": "/PATERILLETTES/pasta-app/static/js/main.61416d3a.js",
-    "static/js/453.5b2ea98f.chunk.js": "/PATERILLETTES/pasta-app/static/js/453.5b2ea98f.chunk.js",
-    "index.html": "/PATERILLETTES/pasta-app/index.html",
-    "main.3347b998.css.map": "/PATERILLETTES/pasta-app/static/css/main.3347b998.css.map",
-    "main.61416d3a.js.map": "/PATERILLETTES/pasta-app/static/js/main.61416d3a.js.map",
-    "453.5b2ea98f.chunk.js.map": "/PATERILLETTES/pasta-app/static/js/453.5b2ea98f.chunk.js.map"
+    "main.css": "/pasta-app/static/css/main.3347b998.css",
+    "main.js": "/pasta-app/static/js/main.56be93d6.js",
+    "static/js/453.5b2ea98f.chunk.js": "/pasta-app/static/js/453.5b2ea98f.chunk.js",
+    "index.html": "/pasta-app/index.html",
+    "main.3347b998.css.map": "/pasta-app/static/css/main.3347b998.css.map",
+    "main.56be93d6.js.map": "/pasta-app/static/js/main.56be93d6.js.map",
+    "453.5b2ea98f.chunk.js.map": "/pasta-app/static/js/453.5b2ea98f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3347b998.css",
-    "static/js/main.61416d3a.js"
+    "static/js/main.56be93d6.js"
   ]
 }
